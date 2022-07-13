@@ -14,9 +14,11 @@ import {
 } from "react-icons/hi";
 // import { SignInButton } from "src/components/Auth/SignInButton";
 import { HoverText } from "src/components/common/HoverText";
+import { useAuth } from "src/hooks/useAuth";
 
 // ユーザーアイコン
 export const UserIcon = () => {
+  const { handleLogout } = useAuth();
   const userIcon: JSX.Element = <HiOutlineUser color='black' size={56} />;
   const HiOutlineQuestionMarkCircleIcon: JSX.Element = (
     <HiOutlineQuestionMarkCircle color='black' size={32} />
@@ -27,6 +29,7 @@ export const UserIcon = () => {
   const userIconElement: JSX.Element = (
     <HiOutlineUser color='black' size={32} />
   );
+
   return (
     <Box>
       <Menu>
@@ -48,7 +51,11 @@ export const UserIcon = () => {
           <MenuItem icon={HiOutlineQuestionMarkCircleIcon} fontSize='large'>
             ヘルプ
           </MenuItem>
-          <MenuItem icon={HiOutlineUserRemoveIcon} fontSize='large'>
+          <MenuItem
+            icon={HiOutlineUserRemoveIcon}
+            fontSize='large'
+            onClick={handleLogout}
+          >
             ログアウト
           </MenuItem>
           <MenuItem>{/* <SignInButton /> */}</MenuItem>
