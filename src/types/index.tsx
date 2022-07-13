@@ -1,11 +1,32 @@
 export type Company = {
   id: string;
-  memo: string;
   name: string;
+  memo: string;
   status: string;
+  createdAt: string;
 };
 
-export type Companies = { companies: Company[] } | undefined;
+export type Companies = Company[];
+
+export type CompaniesData = { companies: Companies } | null;
+
+export type CompaniesError = {
+  statusCode: number;
+  type: string;
+  message: string;
+};
+
+export type CompaniesRespose =
+  | { data: CompaniesData; err: CompaniesError }
+  | undefined;
+
+export type CompanyError = {
+  statusCode: number;
+  type: string;
+  message: string;
+};
+
+export type CompanyRespose = { data: Company; err: CompanyError } | undefined;
 
 export type CompanySortType = "name" | "status";
 
