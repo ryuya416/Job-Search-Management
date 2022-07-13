@@ -23,6 +23,7 @@ import { useEffect, useState } from "react";
 import { DisplayToggle } from "src/components/Sidebar/DisplayToggle";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "src/Firebase/firebase";
+import { Search } from "src/components/Search";
 
 const Home: NextPage = () => {
   // const [companies, setCompanies] = useState<any>([]);
@@ -115,19 +116,19 @@ const Home: NextPage = () => {
             </Flex>
           </Collapse>
           <DisplayToggle {...displayToggleProps} />
-          {/* <Flex direction='column' w='100%' bgColor='gray.50'>
+          <Flex direction='column' w='100%' bgColor='gray.50'>
             <Flex py='36px' bgColor='white'>
               <Box ml='80px'>
                 <Search />
               </Box>
-              <Box mx='auto'>
+              {/* <Box mx='auto'>
                 <AddCompanyInfoButton />
-              </Box>
+              </Box> */}
             </Flex>
             <Box p='56px'>
-              <CompanySection {...companySectionProps} />
+              {/* <CompanySection {...companySectionProps} /> */}
             </Box>
-          </Flex> */}
+          </Flex>
           {/* {companies.map((companie) => (
             <div key={companie.id}>{companie.name}</div>
           ))} */}
