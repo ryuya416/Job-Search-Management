@@ -5,7 +5,7 @@ import { isLoginState } from "src/components/store/LoginUser/LoginUser";
 import { useDisclosure } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
 // import { useAuthContext } from "../src/context/AuthContext";
 
 import app, { auth } from "src/Firebase/firebase";
@@ -17,6 +17,11 @@ export const useAuth = () => {
   const { showMessage } = useMessage();
   const router = useRouter();
   const auth = getAuth(app);
+
+  const handleLogout = async () => {
+    await signOut(auth);
+    await router.push("/login");
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -57,5 +62,6 @@ export const useAuth = () => {
     handleSubmit,
     handleChangeEmail,
     handleChangePassword,
+    handleLogout,
   };
 };
