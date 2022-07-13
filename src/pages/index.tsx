@@ -21,8 +21,21 @@ import { STATUS_LIST } from "src/constants/Status";
 import { StatusListType } from "src/types";
 import { useEffect, useState } from "react";
 import { DisplayToggle } from "src/components/Sidebar/DisplayToggle";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "src/Firebase/firebase";
 
 const Home: NextPage = () => {
+  // const [companies, setCompanies] = useState<any>([]);
+
+  // useEffect(() => {
+  //   const companiesCollectionRef = collection(db, "companies");
+  //   getDocs(companiesCollectionRef).then((querySnapshot) => {
+  //     setCompanies(
+  //       querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
+  //     );
+  //   });
+  // }, []);
+
   // 会社一覧を取得する
   // const { data, error } = useFetchCompanies();
   // 会社一覧を並び替える
@@ -80,6 +93,7 @@ const Home: NextPage = () => {
     isFiltered,
     setIsFilterd,
   };
+
   return (
     <Box>
       <Head>
@@ -114,6 +128,9 @@ const Home: NextPage = () => {
               <CompanySection {...companySectionProps} />
             </Box>
           </Flex> */}
+          {/* {companies.map((companie) => (
+            <div key={companie.id}>{companie.name}</div>
+          ))} */}
         </Flex>
       </Box>
     </Box>
